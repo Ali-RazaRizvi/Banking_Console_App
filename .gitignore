@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Packaging output
+build/
+dist/
+*.spec
+wheels/
+
+# Runtime logs (audit log stays local, never committed)
+logs/*.log
+
+# Local, environment-specific config with real hosts/users
+config/connections.local.yaml
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
