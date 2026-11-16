@@ -1,0 +1,12 @@
+title: "Support Console"
+width: 1280
+height: 800
+native: true            # false = open in the default browser instead of a window
+
+# Optional. Only needed if thin mode fails with DPY-3015 (old password verifier).
+# Path to an Oracle Instant Client folder; enables thick mode for the whole app.
+oracle_client_dir: null
+
+# Seconds before a single database call is abandoned (keeps the app from hanging).
+call_timeout_seconds: 60
+connect_timeout_seconds: 10
