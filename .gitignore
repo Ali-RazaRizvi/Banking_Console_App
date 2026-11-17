@@ -1,4 +1,4 @@
-# Python
+﻿# Python
 __pycache__/
 *.py[cod]
 .venv/
@@ -14,8 +14,8 @@ wheels/
 # Runtime logs (audit log stays local, never committed)
 logs/*.log
 
-# Local, environment-specific config with real hosts/users
-config/connections.local.yaml
+# Saved connections (real hosts and users), written by the app
+config/profiles.yaml
 
 # Editors / OS
 .vscode/

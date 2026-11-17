@@ -1,0 +1,25 @@
+# Tables that must NOT be changed (INSERT / UPDATE / DELETE / MERGE) on UAT.
+# PROD is read-only anyway, so this list only matters for UAT.
+#
+# - One table name per line, without the schema owner.
+# - Wildcards: * = any characters, ? = one character.  e.g.  ACTB_*
+# - A PL/SQL block that even mentions one of these tables is refused.
+#
+# STARTER LIST - review and adjust with the bank team.
+
+forbidden_tables:
+  # Accounting entries and balances
+  - ACTB_DAILY_LOG
+  - ACTB_HISTORY
+  - ACTB_ACCBAL_HISTORY
+  - GLTB_GL_BAL
+  # Customer and account master data
+  - STTM_CUSTOMER
+  - STTM_CUST_ACCOUNT
+  # Branch dates / EOD status
+  - STTM_DATES
+  - AETB_EOC_BRANCHES
+  # User roles and rights
+  - SMTB_ROLE_MASTER
+  - SMTB_ROLE_DETAIL
+  - SMTB_USER_ROLE

@@ -1,0 +1,46 @@
+# Teller batches (OBBRN, table owner OBTRANSACTION).
+
+order: 30
+queries:
+
+  - id: open_teller_batch_count
+    title: Open Teller Batches
+    page: dashboard
+    group: Open Batches
+    schema: obbrn
+    type: read
+    display: count
+    sql: |
+      SELECT COUNT(*)
+      FROM {{obbrn:SRV_TB_BC_TELLER_BATCH}}
+      WHERE teller_status = 'O'
+
+  - id: open_teller_batches
+    title: Open Teller Batches
+    description: Leave the date empty to see all open teller batches.
+    page: dashboard
+    group: Teller Batch
+    schema: obbrn
+    type: read
+    params:
+      - { name: branch_date, label: "Branch date", type: date, required: false }
+    sql: |
+      SELECT *
+      FROM {{obbrn:SRV_TB_BC_TELLER_BATCH}}
+      WHERE teller_status = 'O'
+        AND (:branch_date IS NULL OR TRUNC(branch_date) = :branch_date)
+      ORDER BY branch_code, branch_date DESC
+
+  - id: teller_batches_by_branch
+    title: Teller Batches for a Branch
+    page: dashboard
+    group: Teller Batch
+    schema: obbrn
+    type: read
+    params:
+      - { name: branch_code, label: "Branch code", required: true, placeholder: "e.g. 005" }
+    sql: |
+      SELECT *
+      FROM {{obbrn:SRV_TB_BC_TELLER_BATCH}}
+      WHERE branch_code = :branch_code
+      ORDER BY branch_date DESC
